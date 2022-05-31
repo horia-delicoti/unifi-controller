@@ -36,6 +36,14 @@
         name: docker-compose
         executable: pip3
 
+    - name: Copy file docker-compose
+      ansible.builtin.copy:
+        src: ./docker-compose.yaml
+        dest: /home/horia/docker-compose.yaml
+        owner: horia
+        group: horia
+        mode: '0644'
+
     - name: Start container using docker compose
       docker_compose:
         project_src: /home/horia
@@ -45,4 +53,3 @@
 
     - ansible.builtin.debug:
         var: output
-
