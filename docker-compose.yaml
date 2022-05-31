@@ -5,12 +5,12 @@ services:
     image: lscr.io/linuxserver/unifi-controller:latest
     container_name: unifi-controller
     environment:
-     #- PUID=1000
-     #- PGID=1000
+      - PUID=1000
+      - PGID=horia
       - MEM_LIMIT=1024 #optional
       - MEM_STARTUP=1024 #optional
     volumes:
-      - /home/horia:/config
+      - /home/horia/unifi:/config
     ports:
       - 8443:8443
       - 3478:3478/udp

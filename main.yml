@@ -1,6 +1,7 @@
 ---
 - hosts: all
   become: yes
+  remote_user: horia
 
   tasks:
     - name: Update all packages to their latest version
