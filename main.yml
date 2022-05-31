@@ -1,0 +1,48 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Update all packages to their latest version
+      apt:
+        name: "*"
+        state: latest
+
+    - name: Install Docker
+      ansible.builtin.shell: curl -sSL https://get.docker.com | sh
+
+    - name: Enable the Docker system service to start your containers on boot
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Add the user 'horia' to group 'docker'
+      ansible.builtin.user:
+        name: horia
+        group: docker
+
+    - name: Install python3 and pip3
+      apt:
+        pkg:
+        - libffi-dev
+        - libssl-dev
+        - python3-dev
+        - python3
+        - python3-pip
+
+    - name: Install docker-compose usin pip3
+      pip:
+        name: docker-compose
+        executable: pip3
+
+    - name: Start container using docker compose
+      docker_compose:
+        project_src: /home/horia
+        files:
+        - docker-compose.yaml
+      register: output
+
+    - ansible.builtin.debug:
+        var: output
+
