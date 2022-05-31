@@ -18,3 +18,6 @@ ansible-playbook -i inventory main.yml
 
 ## Links
 - [How ssh-copy-id works](https://www.ssh.com/academy/ssh/copy-id)
+- [How To Install Docker and Docker-Compose On Raspberry Pi](https://dev.to/elalemanyo/how-to-install-docker-and-docker-compose-on-raspberry-pi-1mo)
+- [Docker unifi controller](https://docs.linuxserver.io/images/docker-unifi-controller)
+- [Get started with compose](https://docs.docker.com/compose/gettingstarted/)
